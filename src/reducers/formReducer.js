@@ -1,3 +1,6 @@
+import {notesAPI} from "../api";
+import {setNotes} from "./notesReducer";
+
 const ADD_NOTE = 'ADD_NOTE';
 
 
@@ -27,7 +30,14 @@ const formForReducer = (state = initialState, action) => {
 }
 
 
+export const requestNotes = (noteText) => {
+    return async (dispatch) => {
 
+        let data = await notesAPI.postNote(noteText)
+
+        dispatch(setNotes(data));
+    }
+}
 export const addNote = (noteText) => ({type: ADD_NOTE, noteText});
 
 
