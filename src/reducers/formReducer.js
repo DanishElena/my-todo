@@ -7,6 +7,7 @@ const ADD_NOTE = 'ADD_NOTE';
 let initialState = {
     notes: [],
     noteText: "",
+    id: ""
 };
 
 const formForReducer = (state = initialState, action) => {
@@ -32,9 +33,11 @@ const formForReducer = (state = initialState, action) => {
 
 export const postNotesToDB = (noteText, id) => {
     return async (dispatch) => {
+        dispatch(getNotesToNC())
         dispatch(addNote(noteText, id))
+        dispatch(getNotesToNC())
         let data = await notesAPI.postNote(noteText, id)
-       dispatch(setNotes(data))
+       dispatch(setNotes(data));
     }
 }
 

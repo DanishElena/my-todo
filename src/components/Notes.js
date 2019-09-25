@@ -1,7 +1,7 @@
 import React from "react";
 
-export const Notes = (props) => {
-    debugger;
+export const Notes = React.memo((props) => {
+
     return (
         <div>
             <ul className="list-group">
@@ -19,7 +19,7 @@ export const Notes = (props) => {
             </ul>
         </div>
     )
-}
+})
 
 //         <div>
 //

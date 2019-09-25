@@ -1,6 +1,7 @@
 import {notesAPI} from "../api";
 
 
+
 const DELETE_NOTE = 'DELETE_NOTE';
 const NOTE_IS_DISPLAYED = 'NOTE_IS_DISPLAYED';
 const SET_NOTES = 'SET_NOTES';
@@ -20,7 +21,8 @@ const noteReducer = (state = initialState, action) => {
             return {...state, isDisplayed: action.isDisplayed}
         }
         case SET_NOTES: {
-            return {...state, notes: action.notes}
+            return  { ...state,
+                notes: action.notes}
 
         }
 
@@ -29,11 +31,13 @@ const noteReducer = (state = initialState, action) => {
 
     }
 }
-debugger;
+
 export const getNotesToNC = () => {
     return async (dispatch) => {
+        dispatch(noteIsDisplaying(false));
         let data = await notesAPI.getNotes()
        dispatch(setNotes(data));
+        dispatch(noteIsDisplaying(true));
     }
 }
 

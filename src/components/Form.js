@@ -5,13 +5,9 @@ import {Field, reduxForm} from 'redux-form'
 const FormForNote = (props) => {
 
     let onSubmit = (value) => {
-
-       props.postNotesToDB(value.noteText)
+      let id = new Date().toJSON()
+       props.postNotesToDB(value.noteText, id)
     }
-
-
-
-
 
     return (
             <div>
