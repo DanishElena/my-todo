@@ -20,7 +20,7 @@ const noteReducer = (state = initialState, action) => {
             return {...state, isDisplayed: action.isDisplayed}
         }
         case SET_NOTES: {
-            return {...state, noteText: action.noteText, id: action.id }
+            return {...state, notes: action.notes}
 
         }
 
@@ -33,14 +33,13 @@ debugger;
 export const getNotesToNC = () => {
     return async (dispatch) => {
         let data = await notesAPI.getNotes()
-        let {noteText, id} = data.data
-       dispatch(setNotes(noteText, id));
+       dispatch(setNotes(data));
     }
 }
 
 export const deleteNote = (id) => ({type: DELETE_NOTE, id});
 export const noteIsDisplaying = (isDisplayed) => ({type: NOTE_IS_DISPLAYED, isDisplayed})
-export const setNotes = (noteText, id) => ({type: SET_NOTES, noteText, id })
+export const setNotes = (notes) => ({type: SET_NOTES, notes })
 
 export default noteReducer;
 

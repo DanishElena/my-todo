@@ -1,25 +1,39 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {Home} from "../src/pages/Home";
 import {About} from "../src/pages/About";
 import {Navbar} from "./components/Navbar";
+import {Loader} from "./components/Loader";
+import {connect} from "react-redux";
+import {initializeApp} from "./reducers/appReducer";
 
-function App() {
+class App extends Component {
+    componentDidMount() {
+        this.props.initializeApp();
+    }
 
-  return (
+    render() {
+        if (!this.props.initialized) {
+            return <Loader/>
+        }
+        return (
 
-          <BrowserRouter>
-            <Navbar/>
-            <div className="container pt-4">
+            <BrowserRouter>
+                <Navbar/>
+                <div className="container pt-4">
 
-              <Switch>
-                <Route path={"/"} exact component={Home}/>
-                <Route path={"/about"} component={About}/>
-              </Switch>
-            </div>
-          </BrowserRouter>
+                    <Switch>
+                        <Route path={"/"} exact component={Home}/>
+                        <Route path={"/about"} component={About}/>
+                    </Switch>
+                </div>
+            </BrowserRouter>
 
-  );
+        );
+    }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+    initialized: state.appRed.initialized
+})
+export default connect(mapStateToProps, {initializeApp})(App)

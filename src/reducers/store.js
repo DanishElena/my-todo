@@ -4,12 +4,14 @@ import alertReducer from "./alertReducer";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunkMiddleware from "redux-thunk";
 import formForReducer from "./formReducer";
+import appReducer from "./appReducer";
 
 let reducers = combineReducers({
     notesRed: noteReducer,
     alertRed: alertReducer,
     form: formReducer,
-    formRed: formForReducer
+    formRed: formForReducer,
+    appRed: appReducer
 });
 
 

@@ -34,8 +34,7 @@ export const postNotesToDB = (noteText, id) => {
     return async (dispatch) => {
         dispatch(addNote(noteText, id))
         let data = await notesAPI.postNote(noteText, id)
-        let {noteText, id} = data.data
-       dispatch(setNotes({noteText, id}))
+       dispatch(setNotes(data))
     }
 }
 
