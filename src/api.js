@@ -16,12 +16,10 @@ export const notesAPI = {
     },
 
     postNote(noteText) {
-
     const note = {
         noteText,
         id: new Date().toJSON()
     }
-
         return instance.post(`notes`, note)
             .then(response => {
                 return response.data;

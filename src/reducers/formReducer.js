@@ -1,5 +1,5 @@
 import {notesAPI} from "../api";
-import {setNotes} from "./notesReducer";
+import {getNotesToNC, setNotes} from "./notesReducer";
 
 const ADD_NOTE = 'ADD_NOTE';
 
@@ -13,8 +13,8 @@ const formForReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NOTE:
             let newNote = {
-                id: 3,
-                text: action.noteText,
+                id: action.id,
+                noteText: action.noteText,
             };
             let stateCopy = {
                 ...state,
@@ -30,15 +30,17 @@ const formForReducer = (state = initialState, action) => {
 }
 
 
-export const requestNotes = (noteText) => {
+export const postNotesToDB = (noteText, id) => {
     return async (dispatch) => {
-
-        let data = await notesAPI.postNote(noteText)
-
-        dispatch(setNotes(data));
+        dispatch(addNote(noteText, id))
+        let data = await notesAPI.postNote(noteText, id)
+        let {noteText, id} = data.data
+       dispatch(setNotes({noteText, id}))
     }
 }
-export const addNote = (noteText) => ({type: ADD_NOTE, noteText});
+
+
+export const addNote = (noteText, id) => ({type: ADD_NOTE, noteText, id});
 
 
 export default formForReducer;

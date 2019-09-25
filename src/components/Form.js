@@ -5,9 +5,10 @@ import {Field, reduxForm} from 'redux-form'
 const FormForNote = (props) => {
 
     let onSubmit = (value) => {
-        props.addNote(value.noteText);
-        console.log(value.noteText)
+
+       props.postNotesToDB(value.noteText)
     }
+
 
 
 

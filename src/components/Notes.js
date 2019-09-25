@@ -1,46 +1,40 @@
 import React from "react";
-import axios from 'axios';
 
 export const Notes = (props) => {
-    // debugger;
-    // const getNotes = () =>
-    // {
-    //
-    //         axios.get("http://localhost:3000/notes")
-    //             .then(response => {
-    //                 props.setNotes(response.data.notes);
-    //             });
-    //
-    // }
-
-
-    // const notes = [{
-    //     id: 1,
-    //     text: "Текст заметки",
-    //     date: new Date().toLocaleDateString()
-    // },
-    // {    id: 2,
-    //     text: "Текст заметки2",
-    //     date: new Date().toLocaleDateString()}
-    // ]
-
+    debugger;
     return (
-
         <div>
-
             <ul className="list-group">
                 {props.notes.map(note => {
                     return (
-                        <li className="list-group-item note">
+                        <li className="list-group-item note" key={note.id}>
                             <div>
-                                <strong>{note.text}</strong>
-                                <small>{new Date().toLocaleDateString()}</small>
+                                <strong>{note.noteText}</strong>
+                                <small>{note.id}</small>
                             </div>
                             <button type="button" className="btn btn-danger btn-sm">&times;</button>
-                        </li>
-                    )
+
+                        </li>)
                 })}
             </ul>
         </div>
     )
 }
+
+//         <div>
+//
+//         <ul className="list-group">
+//         {Object.keys(props.notes).map( key => {
+//                 return (
+//                     <li className="list-group-item note" key={props.notes.id[key]}>
+//                         <div>
+//                             <strong>{props.notes.noteText[key]}</strong>
+//                             <small>{props.notes.id[key]}</small>
+//                         </div>
+//                         <button type="button" className="btn btn-danger btn-sm">&times;</button>
+//                     </li>
+//                 )
+//             })}
+// </ul>
+// </div>*/
+

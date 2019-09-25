@@ -2,7 +2,7 @@ import React from "react";
 import FormForNote from "./Form";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {addNote} from "../reducers/formReducer";
+import {addNote, postNotesToDB} from "../reducers/formReducer";
 
 
 let mapStateToProps = (state) => {
@@ -19,11 +19,11 @@ class FormContainer extends React.Component {
 
             <FormForNote notes={this.props.notes}
                    noteText={this.props.noteText}
-                         addNote={this.props.addNote}
+                         postNotesToDB={this.props.postNotesToDB}
             />
         </>
     }
 
 }
 
-export default compose(connect(mapStateToProps, { addNote }))(FormContainer);
+export default compose(connect(mapStateToProps, { postNotesToDB }))(FormContainer);

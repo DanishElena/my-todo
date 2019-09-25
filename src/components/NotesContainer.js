@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {
-    deleteNote,
+    deleteNote, getNotesToNC,
     noteIsDisplaying,
     setNotes
 } from "../reducers/notesReducer";
@@ -12,7 +12,7 @@ import {Loader} from "./Loader";
 
 let mapStateToProps = (state) => {
     return {
-        notes: state.formRed.notes,
+        notes: state.notesRed.notes,
 
         isDisplayed: state.notesRed.isDisplayed
     }
@@ -20,16 +20,21 @@ let mapStateToProps = (state) => {
 
 class NotesContainer extends React.Component {
 
+componentDidMount() {
+  this.props.getNotesToNC()
+}
+
+// shouldComponentUpdate(nextProps, nextState, nextContext) {
+//     if(this.props.notes!==nextProps.notes) return true;
+// }
 
     render() {
         return <>
-            {!this.props.noteIsDisplaying ? <Loader/> : null}
+          {/*{!this.props.noteIsDisplaying ? <Loader/> : null}*/}
             <Notes notes={this.props.notes}
-                   noteText={this.props.noteText}
                    isDisplayed={this.props.isDisplayed}
                    deleteNote={this.props.deleteNote}
-                   setNotes={this.props.setNotes}
-
+                   getNotesToNC={this.props.getNotesToNC}
 
             />
         </>
@@ -37,7 +42,7 @@ class NotesContainer extends React.Component {
 
 }
 
-export default compose(connect(mapStateToProps, { deleteNote, noteIsDisplaying, setNotes }))
+export default compose(connect(mapStateToProps, { deleteNote, noteIsDisplaying, setNotes, getNotesToNC }))
 (NotesContainer);
 
 
