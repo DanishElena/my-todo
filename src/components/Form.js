@@ -24,7 +24,6 @@ const NoteForm = (props) => {
                 <Field name="noteText" component="input" type="text" className="form-control form-control-lg"/>
             </div>
             <div className="d-flex justify-content-center my-2">
-            <button type="submit" className="btn btn-success">Добавить заметку</button>
             </div>
         </form>
     )

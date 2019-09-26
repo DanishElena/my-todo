@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {
-    deleteNote, getNotesToNC,
+    removeNote, getNotesToNC,
     noteIsDisplaying,
-    setNotes
+    setNotes, deleteNoteFromNC
 } from "../reducers/notesReducer";
 import {Notes} from "./Notes";
 import {compose} from "redux";
@@ -29,16 +29,17 @@ class NotesContainer extends React.Component {
             {!this.props.noteIsDisplaying ? <Loader/> : null}
             <Notes notes={this.props.notes}
                    isDisplayed={this.props.isDisplayed}
-                   deleteNote={this.props.deleteNote}
+                   removeNote={this.props.removeNote}
                    getNotesToNC={this.props.getNotesToNC}
                    noteIsDisplaying={this.props.noteIsDisplaying}
+                   deleteNoteFromNC={this.props.deleteNoteFromNC}
             />
         </>
     }
 
 }
 
-export default compose(connect(mapStateToProps, {deleteNote, noteIsDisplaying, setNotes, getNotesToNC}))
+export default compose(connect(mapStateToProps, {removeNote, noteIsDisplaying, setNotes, getNotesToNC, deleteNoteFromNC}))
 (NotesContainer);
 
 

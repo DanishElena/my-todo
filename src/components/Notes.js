@@ -2,6 +2,8 @@ import React from "react";
 
 export const Notes = React.memo((props) => {
 
+
+
     return (
         <div>
             <ul className="list-group">
@@ -12,7 +14,7 @@ export const Notes = React.memo((props) => {
                                 <strong>{note.noteText}</strong>
                                 <small>{note.id}</small>
                             </div>
-                            <button type="button" className="btn btn-danger btn-sm">&times;</button>
+                            <button type="button" className="btn btn-danger btn-sm" onClick={ () => props.deleteNoteFromNC(note)}>&times;</button>
 
                         </li>)
                 })}

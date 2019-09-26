@@ -36,8 +36,8 @@ export const notesAPI = {
             );
     },
 
-    deleteNote(id) {
-        return instance.post(`notes/${id}`)
+    deleteNote(notes) {
+        return instance.delete(`notes/${notes.id}`)
             .then(response => {
                 return response.data;
             });

@@ -8,13 +8,15 @@ const SET_NOTES = 'SET_NOTES';
 
 let initialState = {
     notes: [],
-    isDisplayed: false
+    isDisplayed: false,
+
+
 };
 
 const noteReducer = (state = initialState, action) => {
     switch (action.type) {
         case DELETE_NOTE: {
-            return {...state, notes: action.notes.filter((data, id) => id !== action.id)}
+            return {...state, notes: state.notes.filter(note => note.id !== action.notes.id)}
         }
 
         case NOTE_IS_DISPLAYED: {
@@ -22,7 +24,8 @@ const noteReducer = (state = initialState, action) => {
         }
         case SET_NOTES: {
             return  { ...state,
-                notes: action.notes}
+                notes: action.notes
+            }
 
         }
 
@@ -41,7 +44,15 @@ export const getNotesToNC = () => {
     }
 }
 
-export const deleteNote = (id) => ({type: DELETE_NOTE, id});
+export const deleteNoteFromNC = (notes) => {
+    return (dispatch) => {
+         notesAPI.deleteNote(notes)
+        dispatch(removeNote(notes));
+    }
+}
+
+
+export const removeNote = (notes) => ({type: DELETE_NOTE, notes});
 export const noteIsDisplaying = (isDisplayed) => ({type: NOTE_IS_DISPLAYED, isDisplayed})
 export const setNotes = (notes) => ({type: SET_NOTES, notes })
 
