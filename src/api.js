@@ -11,29 +11,20 @@ export const notesAPI = {
     getNotes() {
         return instance.get(`notes`)
             .then(response => {
-                // return Object.keys(response.data)
-                //     .map( key => {
-                //         return {
-                //           ...response.data[key]
-                //         }})
-                return response.data
+                    return response.data
                 }
-                )},
+            )
+    },
 
     postNote(noteText, id) {
-    const note = {
-        noteText,
-        id
-    }
+        const note = {
+            noteText,
+            id
+        }
         return instance.post(`notes`, note)
             .then(response => {
-                // return Object.keys(response.data).map( key => {
-                //     return {
-                //         ...response.data[key],
-                //     }})
                 return [response.data]
-            }
-            );
+            });
     },
 
     deleteNote(notes) {

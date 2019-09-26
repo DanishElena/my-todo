@@ -6,23 +6,23 @@ import {Alert} from "./Alert";
 
 let mapStateToProps = (state) => {
     return {
-        notes: state.alertRed.notes,
-        visible: state.alertRed.visible
+        visible: state.alertRed.visible,
+        text: state.alertRed.text,
+        kind: state.alertRed.kind
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        showAlert: (notes) => {
-            dispatch(showAlertAction(notes));
+        showAlert: (text, kind, visible) => {
+            dispatch(showAlertAction(text, kind, visible));
         },
-        hideAlertAction: () => {
-            dispatch(hideAlertAction());
+        hideAlert: (visible) => {
+            dispatch(hideAlertAction(visible));
         }
     }
 }
 
 
-const AlertContainer = connect(mapStateToProps, mapDispatchToProps)(Alert);
+export const AlertContainer = connect(mapStateToProps, mapDispatchToProps)(Alert);
 
-export default AlertContainer;

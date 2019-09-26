@@ -3,7 +3,9 @@ const HIDE_ALERT = 'HIDE_ALERT';
 
 let initialState = {
     visible: false,
-    notes: []
+     text: "",
+    kind: ""
+
 };
 
 const alertReducer = (state = initialState, action) => {
@@ -11,7 +13,8 @@ const alertReducer = (state = initialState, action) => {
         case SHOW_ALERT:
             return {
                 ...state,
-                ...action.notes,
+               kind: action.kind,
+                text: action.text,
                 visible: true,
             }
             case HIDE_ALERT:
@@ -24,7 +27,7 @@ const alertReducer = (state = initialState, action) => {
     }
 }
 
-export const showAlertAction = (notes) => ({type: SHOW_ALERT, notes})
-export const hideAlertAction = () => ({type: HIDE_ALERT})
+export const showAlertAction = (text, kind, visible) => ({type: SHOW_ALERT, text, kind, visible})
+export const hideAlertAction = (visible) => ({type: HIDE_ALERT, visible})
 
 export default alertReducer;

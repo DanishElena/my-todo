@@ -7,12 +7,13 @@ export const Notes = React.memo((props) => {
     return (
         <div>
             <ul className="list-group">
-                {props.notes.map(note => {
+                {props.notes.map((note, i) => {
                     return (
                         <li className="list-group-item note" key={note.id}>
                             <div>
+                                <strong>{`${i+1})`}</strong>&nbsp;
+                                {/*<small>{note.id}</small>&nbsp;*/}
                                 <strong>{note.noteText}</strong>
-                                <small>{note.id}</small>
                             </div>
                             <button type="button" className="btn btn-danger btn-sm" onClick={ () => props.deleteNoteFromNC(note)}>&times;</button>
 
