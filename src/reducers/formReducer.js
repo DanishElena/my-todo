@@ -39,8 +39,9 @@ export const postNotesToDB = (noteText, id) => {
         dispatch(addNote(noteText, id))
         dispatch(getNotesToNC())
         let data = await notesAPI.postNote(noteText, id)
-        dispatch(setNotes(data))
         dispatch(showAlertAction("Заметка создана", 'success'))
+        dispatch(setNotes(data))
+
     }
 }
 
