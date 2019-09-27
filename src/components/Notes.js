@@ -8,8 +8,7 @@ export const Notes =  React.memo((props) => (
                     <CSSTransition
                         key={i}
                         classNames='note'
-                        timeout={800}
-                    >
+                        timeout={800}>
                         <li className="list-group-item note" key={note.id}>
 
                             <div>
@@ -19,11 +18,7 @@ export const Notes =  React.memo((props) => (
                             </div>
                             <button type="button" className="btn btn-danger btn-sm" onClick={ () => props.deleteNoteFromNC(note)}>&times;</button>
                         </li>
-
                     </CSSTransition>
-
                 ))}
             </TransitionGroup>
-
-)
-)
+))

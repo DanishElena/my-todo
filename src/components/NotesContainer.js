@@ -36,7 +36,6 @@ class NotesContainer extends React.Component {
             />
         </>
     }
-
 }
 
 export default compose(connect(mapStateToProps, {removeNote, noteIsDisplaying, setNotes, getNotesToNC, deleteNoteFromNC}))

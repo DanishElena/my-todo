@@ -1,44 +1,11 @@
 import React from "react"
 import {Field, reduxForm} from 'redux-form'
 
-// let onSubmit = (value) => {
-//     let id = new Date().toJSON()
-//            if(value.trim()) {
-//         firebase.addNote(value.trim()).then( ()=> {
-//             alert.show("Заметка была создана", 'success')
-//         }).catch(()=> {
-//             alert.show("Что-то пошло не так", 'danger')
-//         })
-//         setValue("")
-//     } else {
-//         alert.show("Введите название заметки")
-//     }
-// }
-
-//     props.postNotesToDB(value.noteText, id)
-// }
-// const submitHandler = event => {
-//     event.preventDefault()
-//     if(value.trim()) {
-//         firebase.addNote(value.trim()).then( ()=> {
-//             alert.show("Заметка была создана", 'success')
-//         }).catch(()=> {
-//             alert.show("Что-то пошло не так", 'danger')
-//         })
-//         setValue("")
-//     } else {
-//         alert.show("Введите название заметки")
-//     }
-// }
-
-
-
 const FormForNote = (props) => {
 
     let onSubmit = (value) => {
       let id = new Date().toJSON()
        props.postNotesToDB(value.noteText, id)
-
     }
 
     return (

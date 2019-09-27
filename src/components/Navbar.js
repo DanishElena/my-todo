@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 
 export const Navbar = () => (
-    <nav className="navbar navbar-dark navbar-expand-lg bg-primary">
+    <nav className="navbar navbar-dark navbar-expand-lg bg-success">
         <div className="navbar-brand">
             Note App
         </div>
@@ -14,6 +14,5 @@ export const Navbar = () => (
                 <NavLink className="nav-link" to={"/about"}>Информация</NavLink>
             </li>
         </ul>
-
     </nav>
 )

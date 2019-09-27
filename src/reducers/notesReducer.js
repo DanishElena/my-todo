@@ -9,8 +9,6 @@ const SET_NOTES = 'SET_NOTES';
 let initialState = {
     notes: [],
     isDisplayed: false,
-
-
 };
 
 const noteReducer = (state = initialState, action) => {
@@ -18,7 +16,6 @@ const noteReducer = (state = initialState, action) => {
         case DELETE_NOTE: {
             return {...state, notes: state.notes.filter(note => note.id !== action.notes.id)}
         }
-
         case NOTE_IS_DISPLAYED: {
             return {...state, isDisplayed: action.isDisplayed}
         }
@@ -26,12 +23,9 @@ const noteReducer = (state = initialState, action) => {
             return  { ...state,
                 notes: action.notes
             }
-
         }
-
         default:
             return state;
-
     }
 }
 

@@ -1,6 +1,6 @@
 import {notesAPI} from "../api";
 import {getNotesToNC, setNotes} from "./notesReducer";
-import {showAlert, showAlertAction} from "./alertReducer";
+import {showAlertAction} from "./alertReducer";
 
 
 const ADD_NOTE = 'ADD_NOTE';
@@ -45,22 +45,7 @@ export const postNotesToDB = (noteText, id) => {
     }
 }
 
-
-//if(value.trim()) {
-//         firebase.addNote(value.trim()).then( ()=> {
-//             alert.show("Заметка была создана", 'success')
-//         }).catch(()=> {
-//             alert.show("Что-то пошло не так", 'danger')
-//         })
-//         setValue("")
-//     } else {
-//         alert.show("Введите название заметки")
-//     }
-// }
-
 export const addNote = (noteText, id) => ({type: ADD_NOTE, noteText, id});
-
-
 export default formForReducer;
 
 
